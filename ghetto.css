@@ -1,4 +1,11 @@
 /*  Colors from http://www.colourlovers.com/palette/137850/Red_Rat */
 article,aside,figure,footer,header,hgroup,nav,section{display:block}
 html{background:#CFCF7C;color:#080808}
-header{background:#5C1E1B;color:#080808 }
+header{
+background:#5C1E1B;
+color:#080808 
+border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px;  
+-webkit-border-radius: 10px; 
+text-align: center;
+}
