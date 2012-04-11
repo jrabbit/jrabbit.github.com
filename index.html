@@ -12,17 +12,42 @@
 	<link rel="stylesheet" href="/css/main.css">
 </head>
   <body>
-    <header>
-      <hgroup> 
-      <h2>"Hit things until design happens."</h2> 
-      </hgroup>
-    </header>
     <article>
       <a href='http://twitter.com/jackolas'>Twitter.</a>
       <br />
       <a href='https://github.com/jrabbit'>Github.</a>
     </article>
   </body>
+	<div class="navbar navbar-fixed-top" data-dropdown="dropdown">
+		<div class="navbar-inner">
+			<div class="container">
 			<a class="brand">Jack Laxson</a>
+			<ul class="nav">
+				<li><a href="http://jacklaxson.com/" class="active">Home</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Me</a>
+					<ul class="dropdown-menu">
+						<li><a href="#about">About</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Google+</a></li>
+						<li><a href="https://twitter.com/jackolas">Twitter</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Software</a>
+					<ul class="dropdown-menu">
+						<li><a href="https://github.com/jrabbit/hitman">Hitman</a></li>
+						<li><a href="https://github.com/jrabbit/photo-time">Photo Time</a></li>
+						<li><a href="https://github.com/jrabbit/SO-ENERGETIC">SO ENERGETIC</a></li>
+						<li><a href="https://github.com/jrabbit/python-snippets">Python Snippets</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="nav pull-right">
+				<a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fjacklaxson.com%2F&screen_name=jackolas" class="btn btn-info"><b>Follow Me on Twitter</b></a>
+			</div>
+			</div>
+		</div>
+	</div>
 	<script src="/js/bootstrap.min.js"></script>
 </html>
