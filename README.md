@@ -10,7 +10,7 @@
 
 ## To-do
 
-* Fix Glyphicons by adding the images to the repository.
-* Test older colors on the new site, add if necessary.
-* Remove deprecated files (i.e., ghetto.css)
-* Have you seen my arbitrary box? Yeah, that needs to be fixed…
+<b>&square; Fix Glyphicons by adding the images to the repository.</b><br>
+&times; <del>Test older colors on the new site, add if necessary.</del><br>
+&check; Remove deprecated files (i.e., ghetto.css)<br>
+<b>&square; Have you seen my arbitrary box? Yeah, that needs to be fixed…</b>
