@@ -1,0 +1,19 @@
+/* TEAM */
+
+jacklaxson.com
+	Dylan Umsted
+		http://www.themacg33k.com/
+	Jack Laxson
+		http://jacklaxson.com/
+	cf. contributors
+		https://github.com/jrabbit/jrabbit.github.com/
+
+/* THANKS */
+
+GLYPHICONS Halflings
+	GLYPHICONS
+	http://glyphicons.com/
+
+Bootstrap front-end Web framework
+	Twitter/@mdo, Twitter/@fat, and contributors
+	http://github.com/twitter/bootstrap/
