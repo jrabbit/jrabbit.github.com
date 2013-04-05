@@ -11,9 +11,8 @@
 
 ## To-do
 
-* Remove deprecated files (i.e., ghetto.css)
+* [ ] Remove deprecated files (i.e., ghetto.css)
 
 ### Done
-
-✓ Fix Glyphicons by adding the images to the repository.
-✓ Have you seen my arbitrary box? Yeah, that needs to be fixed…
+* [✓] Fix Glyphicons by adding the images to the repository.
+* [✓] Have you seen my arbitrary box? Yeah, that needs to be fixed…
