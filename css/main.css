@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic|Carter+One');
+@import url('https://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic|Carter+One');
 
 html, body {
 	height: 100%;
@@ -42,7 +42,7 @@ a.brand {
 	font-weight: normal;
 }
 
-img[src='http://www.w3.org/html/logo/downloads/HTML5_Badge_32.png'] {
+img[src='https://www.w3.org/html/logo/downloads/HTML5_Badge_32.png'] {
 	height: 16px;
 	width: 16px;
 }
