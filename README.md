@@ -11,5 +11,4 @@
 ## To-do
 
 ✓ Fix Glyphicons by adding the images to the repository.<br>
-✓ Remove deprecated files (i.e., ghetto.css)<br>
 ✓ Have you seen my arbitrary box? Yeah, that needs to be fixed…
