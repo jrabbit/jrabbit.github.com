@@ -6,3 +6,8 @@ li.special-gpg summary{
     list-style: none;
 
 }
+
+li.special-gpg > details > summary::-webkit-details-marker {
+    display: none;
+}
+
