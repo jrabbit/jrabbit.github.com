@@ -1,0 +1,8 @@
+li.special-gpg{
+    list-style-type: "🔒";
+}
+
+li.special-gpg summary{
+    list-style: none;
+
+}
