@@ -40,3 +40,25 @@ ul a {
 ul a:visited {
 	color: black;
 }
+
+/* Color Theme Swatches in Hex
+.TechCorp-1-hex { color: #303030; }
+.TechCorp-2-hex { color: #181818; }
+.TechCorp-3-hex { color: #F0C000; }
+.TechCorp-4-hex { color: #F0D800; }
+.TechCorp-5-hex { color: #FFFFFF; }
+*/
+
+@media (prefers-color-scheme: dark) {
+	body{
+		background: #181818;
+		color: white;
+		}
+	ul a{
+		color: white;
+		text-decoration: solid underline #F0C000 3px;
+	}
+	ul a:visited{
+		color: white;
+	}
+}
