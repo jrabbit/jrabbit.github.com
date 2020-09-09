@@ -10,6 +10,7 @@ li.special-gpg:not(*:root) {
 li.special-gpg summary:not(*:root){
     outline:none;
 }
+
 li.special-gpg summary span:not(*:root){
     display: inline;
 }
@@ -17,6 +18,7 @@ li.special-gpg summary span:not(*:root){
 li.special-gpg summary span{
     display: none;
 }
+
 li.special-gpg summary{
     list-style: none;
     outline: none;
@@ -26,3 +28,6 @@ li.special-gpg summary::-webkit-details-marker{
     display: none;
 }
 
+ul{
+	margin: 0;
+}
