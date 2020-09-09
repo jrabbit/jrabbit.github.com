@@ -31,3 +31,12 @@ li.special-gpg summary::-webkit-details-marker{
 ul{
 	margin: 0;
 }
+
+ul a {
+	color: black;
+	text-decoration: solid underline black 3px;
+}
+
+ul a:visited {
+	color: black;
+}
