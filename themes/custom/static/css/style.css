@@ -1,0 +1,58 @@
+/* Color Theme Swatches in Hex
+.TechCorp-1-hex { color: #303030; }
+.TechCorp-2-hex { color: #181818; }
+.TechCorp-3-hex { color: #F0C000; }
+.TechCorp-4-hex { color: #F0D800; }
+.TechCorp-5-hex { color: #FFFFFF; }
+*/
+
+/* supress spurious pygmentize errors */
+.err {
+		border: none !important;
+}
+
+body{
+	display: flex
+}
+
+#post-list{
+	list-style-type: none;
+}
+
+.entry-title{
+	font-size: 24pt;
+}
+
+.entry-content{
+	font-size: 20pt;
+}
+
+#content > h2{
+	font-size: 12pt;
+}
+
+@media (width <= 30em) { 
+	#left-menu{
+		display: none;
+	}
+	.entry-content{
+		font-size: 16pt;
+	}
+	.entry-title{
+		font-size: 20pt;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	body{
+		background: #181818;
+		color: white;
+		}
+	a{
+		color: white;
+		text-decoration: solid underline #F0C000 3px;
+	}
+	a:visited{
+		color: white;
+	}
+}
