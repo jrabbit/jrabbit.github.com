@@ -9,6 +9,8 @@
 
 
 
+    <meta name="tags" content="ssh" />
+    <meta name="tags" content="incremental security" />
 
 </head>
 
@@ -30,8 +32,8 @@
  
   </header>
   <footer class="post-info">
-    <time class="published" datetime="2020-09-14T00:00:00-04:00">
-      Mon 14 September 2020
+    <time class="published" datetime="2020-10-05T00:00:00-04:00">
+      Mon 05 October 2020
     </time>
     <address class="vcard author">
       By           <a class="url fn" href="/author/jack-laxson.html">Jack Laxson</a>
@@ -39,18 +41,31 @@
     <div class="category">
         Category: <a href="/category/writeup.html">Writeup</a>
     </div>
+    <div class="tags">
+        Tags:
+            <a href="/tag/ssh.html">ssh</a>
+            <a href="/tag/incremental-security.html">incremental security</a>
+    </div>
   </footer><!-- /.post-info -->
   <div class="entry-content">
     <p>This article will not be going into <a href="https://en.wikipedia.org/wiki/SSHFP_record">sshfp records</a> themselves but feature how to use them if your DNS vendor's server doesn't support them. I was in this situation with my dns registrar, Namecheap.</p>
-<p>I was reccomended <a href="https://coredns.io/">CoreDNS</a> as a simple to use, docker-deployment-ready, production DNS server. Its pretty quick to follow their setup guide and have some domains resolve with <code>dig</code>. An important gotcha: openssh requires the records to be signed under DNSSEC. This is fixed by adding the dnssec plugin into your <code>Corefile</code> and generating the applicable keys. <code>sudo dnssec-keygen -a ECDSAP256SHA256 domain.tld</code></p>
+<p>I was reccomended <a href="https://coredns.io/">CoreDNS</a> as a simple to use, docker-deployment-ready, production DNS server. Its pretty quick to follow their setup guide and have some domains resolve with <code>dig</code>. TLDR: <code>docker pull coredns/coredns</code> An important gotcha: openssh requires the records to be signed under DNSSEC. This is fixed by adding the dnssec plugin into your <code>Corefile</code> and generating the applicable keys. <code>sudo dnssec-keygen -a ECDSAP256SHA256 domain.tld</code> Make sure you mount the public key and private key into the container. with a volume bind. (This could be in a docker-compose.yml file if you were so inclined or had associated services.)</p>
+<p>Good CoreDNS plugins:</p>
+<ol>
+<li><a href="https://coredns.io/plugins/any/">any</a> any prevents creepy scraping requests</li>
+<li><a href="https://coredns.io/plugins/metrics/">prometheus</a> (adds support for influxdb scraping) I love <a href="https://www.influxdata.com/products/influxdb-overview/influxdb-2-0/">influxdb2</a> but that's for another time.</li>
+</ol>
 <p>In the end my config looked like:</p>
 <p>Corefile:</p>
-<div class="highlight"><pre><span></span><span class="k">jacklaxson.com</span> <span class="p">{</span>
-        <span class="kn">file</span> <span class="s">db.jacklaxson.com</span>
-        <span class="s">log</span>
-        <span class="s">prometheus</span> <span class="n">0.0.0.0</span><span class="p">:</span><span class="mi">9153</span>
-        <span class="s">any</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span></span>jacklaxson.com {
+        dnssec {
+            key file Kjacklaxson
+        }
+        file db.jacklaxson.com
+        log
+        prometheus 0.0.0.0:9153
+        any
+}
 </pre></div>
 
 
@@ -68,9 +83,20 @@ server.jacklaxson.com IN SSHFP 4 2 8d798f349510224240a53193635df39456956fcd370db
 </pre></div>
 
 
-<p>my docker run command: <code>sudo docker run -it -p 127.0.0.1:9153:9153 -p 53:53/tcp -p 53:53/udp -v 
+<p>my docker run command: </p>
+<p><code>sudo docker run -it -p 127.0.0.1:9153:9153 -p 53:53/tcp -p 53:53/udp -v 
 $PWD/db.jacklaxson.com:/db.jacklaxson.com -v $PWD/Corefile:/Corefile -v $PWD/Kjacklaxson.key:/Kjacklaxson.key -v 
 $PWD/Kjacklaxson.private:/Kjacklaxson.private --restart=unless-stopped --name coredns coredns/coredns</code></p>
+<p>The stunning result of our labor:</p>
+<p><code>ssh -o "VerifyHostKeyDNS ask" -o UserKnownHostsFile=/dev/null server.jacklaxson.com</code> gives you</p>
+<div class="highlight"><pre><span></span>The authenticity of host &#39;server.jacklaxson.com (26.....)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:j35df39456956fcd370dba..277Ok.
+Matching host key fingerprint found in DNS.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</pre></div>
+
+
+<p>Tells you about the signature records from DNSSEC! If you have a recent ssh you'll have the fingerprint option so you can paste the fingerprint to accept.</p>
   </div><!-- /.entry-content -->
 </section>
         </main>
