@@ -84,3 +84,34 @@ body > footer{
 		color: white;
 	}
 }
+
+
+li.special-gpg{
+    list-style-type: "🔒";
+}
+
+li.special-gpg:not(*:root) {
+    list-style: none;
+    margin-left: -1.5rem;
+}
+
+li.special-gpg summary:not(*:root){
+    outline:none;
+}
+
+li.special-gpg summary span:not(*:root){
+    display: inline;
+}
+
+li.special-gpg summary span{
+    display: none;
+}
+
+li.special-gpg summary{
+    list-style: none;
+    outline: none;
+}
+
+li.special-gpg summary::-webkit-details-marker{
+    display: none;
+}

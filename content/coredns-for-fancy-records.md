@@ -1,6 +1,6 @@
 Title: Running CoreDNS for fancy DNS records like SSHFP
 Date: 2020-10-05
-Category: Writeup 
+Category: Writeups 
 Tags: ssh, incremental security
 
 This article will not be going into [sshfp records](https://en.wikipedia.org/wiki/SSHFP_record) themselves but feature how to use them if your DNS vendor's server doesn't support them. I was in this situation with my dns registrar, Namecheap.
@@ -50,7 +50,7 @@ $PWD/Kjacklaxson.private:/Kjacklaxson.private --restart=unless-stopped --name co
 
 The stunning result of our labor:
 
-`ssh -o "VerifyHostKeyDNS ask" -o UserKnownHostsFile=/dev/null server.jacklaxson.com` gives you
+`ssh -o "VerifyHostKeyDNS ask" -o UserKnownHostsFile=/dev/null server.jacklaxson.com` gives you:
 
 	The authenticity of host 'server.jacklaxson.com (26.....)' can't be established.
 	ED25519 key fingerprint is SHA256:j35df39456956fcd370dba..277Ok.
