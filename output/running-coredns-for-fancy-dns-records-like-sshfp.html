@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
 		<link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
           <title>Jack Laxson's tech blog - Running CoreDNS for fancy DNS records like SSHFP</title>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="generator" content="Pelican" />
 
 
@@ -15,6 +17,7 @@
 </head>
 
 <body id="index" class="home">
+		<main>
 		<div id="left-menu">
         <header id="banner" class="body">
                 <h1><a href="/">Jack Laxson's tech blog</a></h1>
@@ -23,12 +26,11 @@
             <li class="active"><a href="/category/writeup.html">Writeup</a></li>
         </ul></nav><!-- /#menu -->
         </div>
-        <main>
-<section id="content" class="body">
+<article>
   <header>
     <h2 class="entry-title">
       <a href="/running-coredns-for-fancy-dns-records-like-sshfp.html" rel="bookmark"
-         title="Permalink to Running CoreDNS for fancy DNS records like SSHFP">Running CoreDNS for fancy DNS records like SSHFP</a></h2>
+         title="Permalink to Running CoreDNS for fancy DNS records like SSHFP">Running CoreDNS for fancy <span class="caps">DNS</span> records like <span class="caps">SSHFP</span></a></h2>
  
   </header>
   <footer class="post-info">
@@ -48,14 +50,14 @@
     </div>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>This article will not be going into <a href="https://en.wikipedia.org/wiki/SSHFP_record">sshfp records</a> themselves but feature how to use them if your DNS vendor's server doesn't support them. I was in this situation with my dns registrar, Namecheap.</p>
-<p>I was reccomended <a href="https://coredns.io/">CoreDNS</a> as a simple to use, docker-deployment-ready, production DNS server. Its pretty quick to follow their setup guide and have some domains resolve with <code>dig</code>. TLDR: <code>docker pull coredns/coredns</code> An important gotcha: openssh requires the records to be signed under DNSSEC. This is fixed by adding the dnssec plugin into your <code>Corefile</code> and generating the applicable keys. <code>sudo dnssec-keygen -a ECDSAP256SHA256 domain.tld</code> Make sure you mount the public key and private key into the container. with a volume bind. (This could be in a docker-compose.yml file if you were so inclined or had associated services.)</p>
-<p>Good CoreDNS plugins:</p>
+    <p>This article will not be going into <a href="https://en.wikipedia.org/wiki/SSHFP_record">sshfp records</a> themselves but feature how to use them if your <span class="caps">DNS</span> vendor&#8217;s server doesn&#8217;t support them. I was in this situation with my dns registrar,&nbsp;Namecheap.</p>
+<p>I was recommended <a href="https://coredns.io/">CoreDNS</a> as a simple to use, docker-deployment-ready, production <span class="caps">DNS</span> server. Its pretty quick to follow their setup guide and have some domains resolve with <code>dig</code>. <span class="caps">TLDR</span>: <code>docker pull coredns/coredns</code> An important gotcha: openssh requires the records to be signed under <span class="caps">DNSSEC</span>. This is fixed by adding the dnssec plugin into your <code>Corefile</code> and generating the applicable keys. <code>sudo dnssec-keygen -a ECDSAP256SHA256 domain.tld</code> Make sure you mount the public key and private key into the container. with a volume bind. (This could be in a docker-compose.yml file if you were so inclined or had associated&nbsp;services.)</p>
+<p>Good CoreDNS&nbsp;plugins:</p>
 <ol>
-<li><a href="https://coredns.io/plugins/any/">any</a> any prevents creepy scraping requests</li>
-<li><a href="https://coredns.io/plugins/metrics/">prometheus</a> (adds support for influxdb scraping) I love <a href="https://www.influxdata.com/products/influxdb-overview/influxdb-2-0/">influxdb2</a> but that's for another time.</li>
+<li><a href="https://coredns.io/plugins/any/">any</a> any prevents creepy scraping&nbsp;requests</li>
+<li><a href="https://coredns.io/plugins/metrics/">prometheus</a> (adds support for influxdb scraping) I love <a href="https://www.influxdata.com/products/influxdb-overview/influxdb-2-0/">influxdb2</a> but that&#8217;s for another&nbsp;time.</li>
 </ol>
-<p>In the end my config looked like:</p>
+<p>In the end my config looked&nbsp;like:</p>
 <p>Corefile:</p>
 <div class="highlight"><pre><span></span>jacklaxson.com {
         dnssec {
@@ -69,7 +71,7 @@
 </pre></div>
 
 
-<p>the important (and not sensitive bits) of my zonefile:</p>
+<p>the important (and not sensitive bits) of my&nbsp;zonefile:</p>
 <div class="highlight"><pre><span></span>$ORIGIN jacklaxson.com.
 @   3600 IN SOA ns.jacklaxson.com. admin.jacklaxson.com. (
                 20200831 ; serial
@@ -83,12 +85,12 @@ server.jacklaxson.com IN SSHFP 4 2 8d798f349510224240a53193635df39456956fcd370db
 </pre></div>
 
 
-<p>my docker run command: </p>
+<p>my docker run&nbsp;command: </p>
 <p><code>sudo docker run -it -p 127.0.0.1:9153:9153 -p 53:53/tcp -p 53:53/udp -v 
 $PWD/db.jacklaxson.com:/db.jacklaxson.com -v $PWD/Corefile:/Corefile -v $PWD/Kjacklaxson.key:/Kjacklaxson.key -v 
 $PWD/Kjacklaxson.private:/Kjacklaxson.private --restart=unless-stopped --name coredns coredns/coredns</code></p>
-<p>The stunning result of our labor:</p>
-<p><code>ssh -o "VerifyHostKeyDNS ask" -o UserKnownHostsFile=/dev/null server.jacklaxson.com</code> gives you</p>
+<p>The stunning result of our&nbsp;labor:</p>
+<p><code>ssh -o "VerifyHostKeyDNS ask" -o UserKnownHostsFile=/dev/null server.jacklaxson.com</code> gives&nbsp;you</p>
 <div class="highlight"><pre><span></span>The authenticity of host &#39;server.jacklaxson.com (26.....)&#39; can&#39;t be established.
 ED25519 key fingerprint is SHA256:j35df39456956fcd370dba..277Ok.
 Matching host key fingerprint found in DNS.
@@ -96,9 +98,10 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 </pre></div>
 
 
-<p>Tells you about the signature records from DNSSEC! If you have a recent ssh you'll have the fingerprint option so you can paste the fingerprint to accept.</p>
+<p>Tells you about the signature records from <span class="caps">DNSSEC</span>! If you have a recent ssh you&#8217;ll have the fingerprint option so you can paste the fingerprint to&nbsp;accept.</p>
   </div><!-- /.entry-content -->
-</section>
+</article>
         </main>
+        <footer><a href="https://github.com/jrabbit/">github</a> - <a href="https://pleroma.debian.social/users/jrabbit">mastodon</a></footer>
 </body>
 </html>

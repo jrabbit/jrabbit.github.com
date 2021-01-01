@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
 		<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygment.css" />
         {% block head %}
         <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="generator" content="Pelican" />
         {% if FEED_ALL_ATOM %}
         <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
@@ -34,6 +36,7 @@
 </head>
 
 <body id="index" class="home">
+		<main>
 		<div id="left-menu">
         <header id="banner" class="body">
                 <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
@@ -54,9 +57,9 @@
         {% endif %}
         </ul></nav><!-- /#menu -->
         </div>
-        <main>
         {% block content %}
         {% endblock %}
         </main>
+        <footer><a href="https://github.com/jrabbit/">github</a> - <a href="https://pleroma.debian.social/users/jrabbit">mastodon</a></footer>
 </body>
 </html>

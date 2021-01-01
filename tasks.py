@@ -28,8 +28,8 @@ CONFIG = {
     'github_pages_branch': 'main',
     'commit_message': "'Publish site on {}'".format(datetime.date.today().isoformat()),
     # Host and port for `serve`
-    'host': 'localhost',
-    'port': 8000,
+    'host': '192.168.0.111',
+    'port': 9900,
 }
 
 @task

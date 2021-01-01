@@ -4,7 +4,6 @@
 AUTHOR = 'Jack Laxson'
 SITENAME = "Jack Laxson's tech blog"
 SITEURL = ''
-
 PATH = 'content'
 
 TIMEZONE = 'America/New_York'
@@ -17,7 +16,7 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
-
+TYPOGRIFY = True
 # Blogroll
 # LINKS = (('Pelican', 'https://getpelican.com/'),
          # ('Python.org', 'https://www.python.org/'),
