@@ -29,7 +29,7 @@ CONFIG = {
     'commit_message': "'Publish site on {}'".format(datetime.date.today().isoformat()),
     # Host and port for `serve`
     'host': '192.168.0.111',
-    'port': 9900,
+    'port': 5050,
 }
 
 @task
