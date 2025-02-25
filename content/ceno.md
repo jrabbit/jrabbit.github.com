@@ -2,6 +2,7 @@ Title: Ce.no a timely mixnet, or How to trick Larry Ellison into helping Ukrania
 Date: 2023-02-28
 Category: How-To
 Tags: ceno
+Status: draft
 
 Get your compute lined up
 -------------------------
