@@ -54,11 +54,11 @@ ul a:visited {
 		background: #181818;
 		color: white;
 		}
-	ul a{
+	section a{
 		color: white;
 		text-decoration: solid underline #F0C000 3px;
 	}
-	ul a:visited{
+	section a:visited{
 		color: white;
 	}
 }

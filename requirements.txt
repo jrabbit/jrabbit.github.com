@@ -1,0 +1,3 @@
+invoke
+pelican[markdown]
+typogrify

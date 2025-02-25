@@ -1,0 +1,122 @@
+/* Color Theme Swatches in Hex
+.TechCorp-1-hex { color: #303030; }
+.TechCorp-2-hex { color: #181818; }
+.TechCorp-3-hex { color: #F0C000; }
+.TechCorp-4-hex { color: #F0D800; }
+.TechCorp-5-hex { color: #FFFFFF; }
+*/
+
+/* supress spurious pygmentize errors */
+.err {
+		border: none !important;
+}
+
+body{
+	display: flex
+	flex-direction: column;
+	padding-left: 17px;
+}
+
+main{ 
+	display: flex;
+	flex-direction: row;
+}
+#post-list{
+	list-style-type: none;
+}
+
+.entry-title{
+	font-size: 24pt;
+}
+
+.entry-content{
+	font-size: 20pt;
+}
+
+#content > h2{
+	font-size: 12pt;
+	font-style: italic;
+}
+
+@media (width <= 50em) { 
+	#left-menu{
+		display: none;
+	}
+	.entry-content{
+		font-size: 16pt;
+	}
+	.entry-title{
+		font-size: 20pt;
+	}
+}
+
+body > footer{
+	flex: 1;
+	font-size: 10pt;
+}
+
+footer >img {
+    width: 120px;
+}
+
+@media (prefers-color-scheme : dark) {
+	body{
+		background: #181818;
+		color: white;
+		}
+	pre{
+		background: #303030;
+		font-size: 110%;
+	}
+	code{
+		background: #303030;
+		font-size: 110%;
+	}
+	#left-menu{
+		margin-right: .5em;
+		max-width: 15vw;
+	}
+	article{
+		border-left: solid #FFFFFF .1em;
+		padding-left: 1em;
+		max-width: 50vw;
+	}
+	a{
+		color: white;
+		text-decoration: solid underline #F0C000 3px;
+	}
+	a:visited{
+		color: white;
+	}
+}
+
+
+li.special-gpg{
+    list-style-type: "🔒";
+}
+
+li.special-gpg:not(*:root) {
+    list-style: none;
+    margin-left: -1.5rem;
+}
+
+li.special-gpg summary:not(*:root){
+    outline:none;
+}
+
+li.special-gpg summary span:not(*:root){
+    display: inline;
+}
+
+li.special-gpg summary span{
+    display: none;
+}
+
+li.special-gpg summary{
+    list-style: none;
+    outline: none;
+}
+
+li.special-gpg summary::-webkit-details-marker{
+    display: none;
+}
