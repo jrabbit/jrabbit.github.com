@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 
-AUTHOR = 'Jack Laxson'
-SITENAME = "Jack Laxson's tech blog"
+AUTHOR = 'Jrabbit'
+SITENAME = "Jrabbit's tech blog"
 SITEURL = ''
 PATH = 'content'
 
@@ -24,8 +24,8 @@ TYPOGRIFY = True
          # ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('Github', 'https://github.com/jrabbit'),
-          ('Debian Pleroma (Fediverse/Mastodon)', 'https://pleroma.debian.social/jrabbit'),)
+SOCIAL = (('Github', 'https://github.com/jrabbit'),)
+          # ('Debian Pleroma (Fediverse/Mastodon)', 'https://pleroma.debian.social/jrabbit'),)
 
 DEFAULT_PAGINATION = 10
 THEME = "themes/custom"

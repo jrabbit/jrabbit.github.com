@@ -1,15 +1,16 @@
 [tool.poetry]
 name = "jrabbit.github.com"
+package-mode = false
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.11"
 pelican = {extras = ["markdown"], version = "^4.7.1"}
-invoke = "^1.6.0"
-typogrify = "^2.0.7"
-livereload = "^2.6.3"
+invoke = "*"
+typogrify = "^2"
+livereload = "^2"
 
 [tool.poetry.dev-dependencies]
 
