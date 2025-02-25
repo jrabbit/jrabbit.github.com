@@ -3,6 +3,7 @@ Date: 2020-10-05
 Category: Writeups 
 Tags: ssh, incremental security
 Status: draft
+
 This article will not be going into [sshfp records](https://en.wikipedia.org/wiki/SSHFP_record) themselves but feature how to use them if your DNS vendor's server doesn't support them. I was in this situation with my dns registrar, Namecheap.
 
 I was recommended [CoreDNS](https://coredns.io/) as a simple to use, docker-deployment-ready, production DNS server. Its pretty quick to follow their setup guide and have some domains resolve with `dig`. TLDR: `docker pull coredns/coredns` An important gotcha: openssh requires the records to be signed under DNSSEC. This is fixed by adding the dnssec plugin into your `Corefile` and generating the applicable keys. `sudo dnssec-keygen -a ECDSAP256SHA256 domain.tld` Make sure you mount the public key and private key into the container. with a volume bind. (This could be in a docker-compose.yml file if you were so inclined or had associated services.)
